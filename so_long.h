@@ -6,7 +6,7 @@
 /*   By: jcampagn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 17:56:59 by jcampagn          #+#    #+#             */
-/*   Updated: 2022/02/05 11:48:44 by jcampagn         ###   ########.fr       */
+/*   Updated: 2022/02/07 23:20:44 by vess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,9 @@ typedef struct s_combo {
 
 
 /* -------------------------------------------------------------------------- */
-/*                                     GNL                                    */
+/*  void    display_map(char **map, t_stuff stuff)
+void    display_map(char **map, t_stuff stuff)
+                                   GNL                                    */
 /* -------------------------------------------------------------------------- */
 size_t	ft_strlen(const char *s);
 char	*ft_strchr(char *s, int c);
@@ -92,5 +94,12 @@ char	*ft_strjoin(const char *s1, const char *s2 );
 char	*ft_get_line(char *str);
 char	*ft_new_left_str(char *str);
 char	*get_next_line(int fd);
+
+/* -------------------------------------------------------------------------- */
+/*                                     SO_long                                */
+/* -------------------------------------------------------------------------- */
+void    write_txt(char c, t_data mlx, int i, int j);
+void put_txt (char **map, t_data mlx, t_stuff stuff);
+void    display_map(char **map, t_stuff stuff);
 
 #endif
