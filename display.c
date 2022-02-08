@@ -6,18 +6,18 @@
 /*   By: vess <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 22:42:31 by vess              #+#    #+#             */
-/*   Updated: 2022/02/07 23:25:05 by vess             ###   ########.fr       */
+/*   Updated: 2022/02/08 23:41:34 by vess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void	init_txt(t_data *mlx, t_img *txt, char *path)
+ void	init_txt(t_data *mlx, t_img *txt, char *path)
 {
 	txt->img = mlx_xpm_file_to_image(mlx->mlx, path, &txt->h, &txt->w);
 }
 
-static void	get_txt(t_data *mlx)
+ void	get_txt(t_data *mlx)
 {
 	init_txt(mlx, &mlx->txt.floor, FLOOR);
 	init_txt(mlx, &mlx->txt.wall, WALL);

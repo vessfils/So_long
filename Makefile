@@ -3,37 +3,62 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vess <marvin@42.fr>                        +#+  +:+       +#+         #
+#    By: lzaccome <lzaccome@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/02/01 10:19:31 by vess              #+#    #+#              #
-#    Updated: 2022/02/07 23:13:28 by vess             ###   ########.fr        #
+#    Created: 2021/12/01 05:31:56 by lzaccome          #+#    #+#              #
+#    Updated: 2022/02/08 23:40:17 by vess             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 
-SRC = so_long.c \
-	  get_next_line.c \
-	  get_next_line_utils.c \
-	display.c	\
+CC = clang
 
+CFLAGS =  -Wall -Wextra -Werror
 
-OBJ = $(SRC:.c=.o)
+SRCS =	so_long.c \
+		get_next_line.c \
+		get_next_line_utils.c \
+		display.c		
+
+_GREY=	$'\033[1;30m
+_RED=	$'\033[1;31m
+_GREEN=	$'\033[1;32m
+_YELLOW=$'\033[1;33m
+_BLUE=	$'\033[1;34m
+_PURPLE=$'\033[1;35m
+_CYAN=	$'\033[1;36m
+_WHITE=	$'\033[1;37m
+
+OBJ = $(SRCS:.c=.o)
+MLX = -lmlx -Lmlx_linux -Imlx_linux -lXext -lX11 -lm -lz
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-		make -C minilibx-linux
-		mv minilibx-linux/libmlx.a .
-		gcc -Wall -g3 -Werror -Wextra -c $(SRC)
-		gcc -Wall -g -Werror -Wextra -L. -lmlx -lXext -lX11 $(OBJ) -o $(NAME)
+		@echo "$(_YELLOW)[Compilation ongoing ...]"
+		@echo "$(_GREEN)[Compilation finished]"
+		@make -C mlx_linux all
+			$(CC) $(CFLAGS) $(OBJ) $(MLX) -o $(NAME)
+		@echo "$(_CYAN)[Executable created]"
+		@echo [Name : so_long]
 
+%o: %.c
+	$(CC) $(FLAGS) -I includes -Imlx_linux -O3 -c $< -o $@
+	
 clean:
-		make -C minilibx-linux clean
-		rm -rf $(OBJ) libft.a libmlx.a
+	@rm -f $(OBJ)
+	@echo "$(_RED)[All .o removed]"
 
 fclean: clean
-		make -C minilibx-linux clean
-		rm -rf $(NAME)
+	@rm -f $(NAME)
+	@echo "$(_RED)[Executable removed]"
 
-re : fclean all
+git : fclean
+	git add --all
+	git commit 
+	git push 
+	
+re: fclean all
+
+.PHONY : all bonus clean fclean re

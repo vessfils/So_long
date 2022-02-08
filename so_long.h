@@ -6,7 +6,7 @@
 /*   By: jcampagn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 17:56:59 by jcampagn          #+#    #+#             */
-/*   Updated: 2022/02/07 23:20:44 by vess             ###   ########.fr       */
+/*   Updated: 2022/02/08 23:47:55 by vess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define SO_LONG_H
 
 # include <math.h>
-# include "./minilibx-linux/mlx.h"
+# include "./mlx_linux/mlx.h"
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
@@ -30,8 +30,8 @@
 # define FLOOR	"images/sand.xpm"
 # define WALL	"images/cactus.xpm"
 # define PLAYER	"images/dino1.xpm"
-# define COLLECT	"images/collect.xpm"
-# define EXIT	"imags/exit.xpm"
+# define COLLECT	"images/drop1.xpm"
+# define EXIT	"images/exit.xpm"
 
 typedef struct s_img {
 	void	*img;
@@ -101,5 +101,7 @@ char	*get_next_line(int fd);
 void    write_txt(char c, t_data mlx, int i, int j);
 void put_txt (char **map, t_data mlx, t_stuff stuff);
 void    display_map(char **map, t_stuff stuff);
+void   init_txt(t_data *mlx, t_img *txt, char *path);
+void   get_txt(t_data *mlx);
 
 #endif
