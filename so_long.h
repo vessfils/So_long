@@ -6,7 +6,7 @@
 /*   By: jcampagn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 17:56:59 by jcampagn          #+#    #+#             */
-/*   Updated: 2022/02/08 23:47:55 by vess             ###   ########.fr       */
+/*   Updated: 2022/02/09 21:02:15 by vess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 # define WALL	"images/cactus.xpm"
 # define PLAYER	"images/dino1.xpm"
 # define COLLECT	"images/drop1.xpm"
-# define EXIT	"images/exit.xpm"
+# define EXIT	"images/puddle.xpm"
 
 typedef struct s_img {
 	void	*img;
@@ -84,9 +84,7 @@ typedef struct s_combo {
 
 
 /* -------------------------------------------------------------------------- */
-/*  void    display_map(char **map, t_stuff stuff)
-void    display_map(char **map, t_stuff stuff)
-                                   GNL                                    */
+/*                                     GNL                                    */
 /* -------------------------------------------------------------------------- */
 size_t	ft_strlen(const char *s);
 char	*ft_strchr(char *s, int c);
