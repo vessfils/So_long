@@ -3,15 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   display.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vess <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: jcampagn <jcampagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 22:42:31 by vess              #+#    #+#             */
-/*   Updated: 2022/02/08 23:41:34 by vess             ###   ########.fr       */
+/*   Updated: 2022/02/10 17:40:46 by jcampagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+void	free_mlx(t_data *mlx)
+{
+	if (mlx->mlx)
+	{
+			mlx_destroy_image(mlx->mlx, mlx->txt.floor.img);
+			mlx_destroy_image(mlx->mlx, mlx->txt.wall.img);
+			mlx_destroy_image(mlx->mlx, mlx->txt.collect.img);
+			mlx_destroy_image(mlx->mlx, mlx->txt.exit.img);
+			mlx_destroy_image(mlx->mlx, mlx->txt.player.img);
+			mlx_destroy_display(mlx->mlx);
+			mlx_destroy_window(mlx->mlx, mlx->win);
+			free(mlx->mlx);
+	}
 
+}
  void	init_txt(t_data *mlx, t_img *txt, char *path)
 {
 	txt->img = mlx_xpm_file_to_image(mlx->mlx, path, &txt->h, &txt->w);
@@ -53,7 +67,6 @@ void put_txt (char **map, t_data mlx, t_stuff stuff)
 
 	i = 0;
 
-
 	while (i < stuff.line_count)
 	{
 		j= 0;
@@ -66,14 +79,24 @@ void put_txt (char **map, t_data mlx, t_stuff stuff)
 		i++;
 	}
 }
+int	key_hook(int key, t_data mlx)
+{
+	if (key == 65307)
+	{	
+		free_mlx(&mlx);
+	}
+
+
+	return (0);
+}
 void	display_map(char **map, t_stuff stuff)
 {
 	t_data	mlx;
-	//t_combo	combo;
+	t_combo	combo;
 	
-//	combo.map = map;
-//	combo.stuff = &stuff;
-//	combo.count = 0;
+	combo.map = map;
+	combo.stuff = &stuff;
+	combo.count = 0;
 
 	mlx.mlx = mlx_init();
 	if (mlx.mlx == NULL)
@@ -84,6 +107,7 @@ void	display_map(char **map, t_stuff stuff)
 	mlx.win = mlx_new_window(mlx.mlx, (mlx.txt.floor.w * stuff.line_len),
 			(mlx.txt.floor.h * stuff.line_count), "So Long !");
 	put_txt(map, mlx, stuff);
+	combo.mlx = &mlx;
+	mlx_hook(mlx.win, 2, (1L << 0), key_hook, &combo.mlx);
 	mlx_loop(mlx.mlx);
-//	combo.mlx = &mlx;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcampagn <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jcampagn <jcampagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 17:56:59 by jcampagn          #+#    #+#             */
-/*   Updated: 2022/02/09 21:02:15 by vess             ###   ########.fr       */
+/*   Updated: 2022/02/10 17:41:20 by jcampagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ typedef struct s_img {
 }				t_img;
 
 typedef struct s_txt {
-	t_img	floor;
+	t_img	floor;	
 	t_img	wall;
 	t_img	collect;
 	t_img	exit;
@@ -101,5 +101,6 @@ void put_txt (char **map, t_data mlx, t_stuff stuff);
 void    display_map(char **map, t_stuff stuff);
 void   init_txt(t_data *mlx, t_img *txt, char *path);
 void   get_txt(t_data *mlx);
+int	key_hook(int key, t_data mlx);
 
 #endif
