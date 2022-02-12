@@ -6,7 +6,7 @@
 /*   By: jcampagn <jcampagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 17:58:44 by jcampagn          #+#    #+#             */
-/*   Updated: 2022/02/10 17:41:24 by jcampagn         ###   ########.fr       */
+/*   Updated: 2022/02/12 18:08:13 by jcampagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	**malloc_map(int fd, t_stuff *stuff)
 		(stuff->line_count)++;
 		line = get_next_line(fd);
 	}
-	map = malloc((stuff->line_count) * sizeof(char *) + 1);
+	map = malloc((stuff->line_count + 1) * sizeof(char *));
 	if (!map)
 		return (NULL);
 	return (map);
@@ -53,7 +53,8 @@ void	get_map(int fd, char **map, t_stuff *stuff)
 			write(1, "Error : gnl failed\n", 20);
 		i++;
 	}
-	map[i] = "\n";
+	map[i] = 0;
+	printf("%d\n", check_map_rectengular(map));
 	return ;
 }
 
@@ -71,10 +72,9 @@ int	main(int ac, char **av)
 {
 	int					fd;
 	char				**map;
-//	int					i;
 	t_stuff				stuff;
 
-//	i = 0;
+
 	init_stuff(&stuff);
 	if (ac != 2)
 		return (write(1, "Error\n", 6));
@@ -87,6 +87,6 @@ int	main(int ac, char **av)
 	if (fd < 0)
 		write(1, "Error\n", 6);
 	get_map(fd, map, &stuff);
-	display_map(map, stuff);	
+	display_map(map, stuff);
 	return (0);
 }

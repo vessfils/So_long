@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lzaccome <lzaccome@student.42.fr>          +#+  +:+       +#+         #
+#    By: jcampagn <jcampagn@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/01 05:31:56 by lzaccome          #+#    #+#              #
-#    Updated: 2022/02/08 23:40:17 by vess             ###   ########.fr        #
+#    Updated: 2022/02/12 18:09:49 by jcampagn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,10 @@ CFLAGS =  -Wall -Wextra -Werror
 SRCS =	so_long.c \
 		get_next_line.c \
 		get_next_line_utils.c \
-		display.c		
+		display.c	\
+		free.c \
+		moove.c	\
+		check.c
 
 _GREY=	$'\033[1;30m
 _RED=	$'\033[1;31m
@@ -61,4 +64,4 @@ git : fclean
 	
 re: fclean all
 
-.PHONY : all bonus clean fclean re
+.PHONY : all bonus clean fclean re git

@@ -6,7 +6,7 @@
 /*   By: jcampagn <jcampagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 17:56:59 by jcampagn          #+#    #+#             */
-/*   Updated: 2022/02/10 17:41:20 by jcampagn         ###   ########.fr       */
+/*   Updated: 2022/02/12 18:09:16 by jcampagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,11 +96,17 @@ char	*get_next_line(int fd);
 /* -------------------------------------------------------------------------- */
 /*                                     SO_long                                */
 /* -------------------------------------------------------------------------- */
-void    write_txt(char c, t_data mlx, int i, int j);
-void put_txt (char **map, t_data mlx, t_stuff stuff);
-void    display_map(char **map, t_stuff stuff);
-void   init_txt(t_data *mlx, t_img *txt, char *path);
-void   get_txt(t_data *mlx);
-int	key_hook(int key, t_data mlx);
+void	write_txt(char c, const t_data *mlx, int i, int j);
+void	put_txt(char **map, t_data mlx, t_stuff stuff);
+void	display_map(char **map, t_stuff stuff);
+void	init_txt(t_data *mlx, t_img *txt, char *path);
+void	get_txt(t_data *mlx);
+int		key_hook(int key, t_combo *combo);
+void	free_mlx(t_data *mlx, char **map, int line_count);
+void	free_map(char **map, int line_count);
+void	moove_right(t_combo *combo);
+void	moove_left(t_combo *combo);
+void	moove_up(t_combo *combo);
+int		check_map_rectengular(char **map);
 
 #endif
