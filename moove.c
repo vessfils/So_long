@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   moove.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcampagn <jcampagn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vess <vess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 17:56:59 by jcampagn          #+#    #+#             */
-/*   Updated: 2022/02/12 18:08:51 by jcampagn         ###   ########.fr       */
+/*   Updated: 2022/02/15 00:17:01 by vess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
 
-void	printmap(char ** map)
+void	printmap(char **map)
 {
 	int	i;
-	
-	i =	0;
+
+	i	=	0;
 	while (map [i] != 0)
 	{
 		printf("%s", map[i]);

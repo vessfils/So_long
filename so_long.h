@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcampagn <jcampagn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vess <vess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 17:56:59 by jcampagn          #+#    #+#             */
-/*   Updated: 2022/02/12 18:09:16 by jcampagn         ###   ########.fr       */
+/*   Updated: 2022/02/15 00:18:42 by vess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,5 +108,6 @@ void	moove_right(t_combo *combo);
 void	moove_left(t_combo *combo);
 void	moove_up(t_combo *combo);
 int		check_map_rectengular(char **map);
+void	printmap(char **map);
 
 #endif

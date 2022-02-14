@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcampagn <jcampagn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vess <vess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 22:42:31 by vess              #+#    #+#             */
-/*   Updated: 2022/02/12 17:48:53 by jcampagn         ###   ########.fr       */
+/*   Updated: 2022/02/15 00:28:02 by vess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	display_map(char **map, t_stuff stuff)
 	}
 	get_txt(&mlx);
 	mlx.win = mlx_new_window(mlx.mlx, (mlx.txt.floor.w * (stuff.line_len - 1)),
-			(mlx.txt.floor.h * (stuff.line_count - 1)), "So Long !");
+			(mlx.txt.floor.h * stuff.line_count), "So Long !");
 	put_txt(map, mlx, stuff);
 	combo.mlx = &mlx;
 	mlx_hook(mlx.win, 2, (1L << 0), key_hook, &combo);

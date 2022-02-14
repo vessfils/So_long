@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jcampagn <jcampagn@student.42.fr>          +#+  +:+       +#+         #
+#    By: vess <vess@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/01 05:31:56 by lzaccome          #+#    #+#              #
-#    Updated: 2022/02/12 18:09:49 by jcampagn         ###   ########.fr        #
+#    Updated: 2022/02/15 00:06:50 by vess             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,8 @@ SRCS =	so_long.c \
 		get_next_line.c \
 		get_next_line_utils.c \
 		display.c	\
-		free.c \
-		moove.c	\
+		free.c	\
+		moove.c \
 		check.c
 
 _GREY=	$'\033[1;30m
@@ -64,4 +64,4 @@ git : fclean
 	
 re: fclean all
 
-.PHONY : all bonus clean fclean re git
+.PHONY : all bonus clean fclean re
