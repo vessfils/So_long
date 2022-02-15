@@ -6,7 +6,7 @@
 /*   By: vess <vess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 17:56:59 by jcampagn          #+#    #+#             */
-/*   Updated: 2022/02/16 00:09:37 by vess             ###   ########.fr       */
+/*   Updated: 2022/02/16 00:28:40 by vess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,48 +28,56 @@ void	printmap(char **map)
 void	moove_right(t_combo *combo)
 {
 	if (combo->map[combo->stuff->y][combo->stuff->x + 1] == 'C')
-		combo->stuff->collectible++;
-	if (combo->map[combo->stuff->y][combo->stuff->x + 1] == 'E')
+		combo->stuff->collectible--;
+	if (combo->map[combo->stuff->y][combo->stuff->x + 1] == 'E' &&
+		combo->stuff->collectible == 0)
 		free_mlx(combo->mlx, combo->map, combo->stuff->line_count);
 	combo->map[combo->stuff->y][combo->stuff->x] = '0';
 	combo->map[combo->stuff->y][combo->stuff->x + 1] = 'P';
 	combo->stuff->x++;
+	printf("%d\n", combo->count++);
 	put_txt(combo->map, *combo->mlx, *combo->stuff);
 }
 
 void	moove_left(t_combo *combo)
 {
 	if (combo->map[combo->stuff->y][combo->stuff->x - 1] == 'C')
-		combo->stuff->collectible++;
-	if (combo->map[combo->stuff->y][combo->stuff->x - 1] == 'E')
+		combo->stuff->collectible--;
+	if (combo->map[combo->stuff->y][combo->stuff->x - 1] == 'E' &&
+		combo->stuff->collectible == 0)
 		free_mlx(combo->mlx, combo->map, combo->stuff->line_count);
 	combo->map[combo->stuff->y][combo->stuff->x] = '0';
 	combo->map[combo->stuff->y][combo->stuff->x - 1] = 'P';
 	combo->stuff->x--;
+	printf("%d\n", combo->count++);
 	put_txt(combo->map, *combo->mlx, *combo->stuff);
 }
 
 void	moove_up(t_combo *combo)
 {
 	if (combo->map[combo->stuff->y - 1][combo->stuff->x] == 'C')
-		combo->stuff->collectible++;
-	if (combo->map[combo->stuff->y - 1][combo->stuff->x] == 'E')
+		combo->stuff->collectible--;
+	if (combo->map[combo->stuff->y - 1][combo->stuff->x] == 'E'&&
+		combo->stuff->collectible == 0)
 		free_mlx(combo->mlx, combo->map, combo->stuff->line_count);
 	combo->map[combo->stuff->y][combo->stuff->x] = '0';
 	combo->map[combo->stuff->y - 1][combo->stuff->x] = 'P';
 	combo->stuff->y--;
+	printf("%d\n", combo->count++);
 	put_txt(combo->map, *combo->mlx, *combo->stuff);
 }
 
 void	moove_down(t_combo *combo)
 {
 	if (combo->map[combo->stuff->y + 1][combo->stuff->x] == 'C')
-		combo->stuff->collectible++;
-	if (combo->map[combo->stuff->y - 1][combo->stuff->x] == 'E')
+		combo->stuff->collectible--;
+	if (combo->map[combo->stuff->y - 1][combo->stuff->x] == 'E' &&
+		combo->stuff->collectible == 0)
 		free_mlx(combo->mlx, combo->map, combo->stuff->line_count);
 	combo->map[combo->stuff->y][combo->stuff->x] = '0';
 	combo->map[combo->stuff->y + 1][combo->stuff->x] = 'P';
 	combo->stuff->y++;
+	printf("%d\n", combo->count++);
 	put_txt(combo->map, *combo->mlx, *combo->stuff);
 }
 
