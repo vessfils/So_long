@@ -6,7 +6,7 @@
 /*   By: vess <vess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 17:58:44 by jcampagn          #+#    #+#             */
-/*   Updated: 2022/02/15 00:18:44 by vess             ###   ########.fr       */
+/*   Updated: 2022/02/15 23:32:47 by vess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	get_map(int fd, char **map, t_stuff *stuff)
 		i++;
 	}
 	map[i] = 0;
-	printf("%d\n", check_map_rectengular(map));
+	parse_file(map, stuff);
 	return ;
 }
 
@@ -65,6 +65,7 @@ void	init_stuff(t_stuff *stuff)
 	stuff->player = 0;
 	stuff->collectible = 0;
 	stuff->exit = 0;
+	stuff->unknown = 0;
 	return ;
 }
 
@@ -87,7 +88,8 @@ int	main(int ac, char **av)
 	if (fd < 0)
 		write(1, "Error\n", 6);
 	get_map(fd, map, &stuff);
-	printmap(map);
+	//printmap(map);
+	printf("%d\n", check_is_surrounded_by_walls(map, &stuff));
 	display_map(map, stuff);
 	return (0);
 }

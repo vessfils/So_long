@@ -6,7 +6,7 @@
 /*   By: vess <vess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 17:56:59 by jcampagn          #+#    #+#             */
-/*   Updated: 2022/02/15 00:18:42 by vess             ###   ########.fr       */
+/*   Updated: 2022/02/15 23:30:13 by vess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ typedef struct s_stuff
 	int	player;
 	int	collectible;
 	int	exit;
+	int	unknown;
 	int	x;
 	int	y;
 }				t_stuff;
@@ -109,5 +110,9 @@ void	moove_left(t_combo *combo);
 void	moove_up(t_combo *combo);
 int		check_map_rectengular(char **map);
 void	printmap(char **map);
+void	parse_file(char **map, t_stuff *stuff);
+void	check_characters(char **map, t_stuff *stuff);
+int		check_bord(char *line);
+int		check_is_surrounded_by_walls(char **map, t_stuff *stuff);
 
 #endif
