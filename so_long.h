@@ -6,7 +6,7 @@
 /*   By: vess <vess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 17:56:59 by jcampagn          #+#    #+#             */
-/*   Updated: 2022/02/15 23:30:13 by vess             ###   ########.fr       */
+/*   Updated: 2022/02/15 23:58:34 by vess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ int		check_map_rectengular(char **map);
 void	printmap(char **map);
 void	parse_file(char **map, t_stuff *stuff);
 void	check_characters(char **map, t_stuff *stuff);
-int		check_bord(char *line);
+int		check_bord(char *line, t_stuff *stuff);
 int		check_is_surrounded_by_walls(char **map, t_stuff *stuff);
 
 #endif

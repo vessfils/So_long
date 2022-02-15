@@ -6,7 +6,7 @@
 /*   By: vess <vess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 22:42:31 by vess              #+#    #+#             */
-/*   Updated: 2022/02/15 00:28:02 by vess             ###   ########.fr       */
+/*   Updated: 2022/02/16 00:16:04 by vess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,6 @@ void	display_map(char **map, t_stuff stuff)
 	combo.map = map;
 	combo.stuff = &stuff;
 	combo.count = 0;
-	combo.stuff->y = 3;
-	combo.stuff->x = 1;
 
 	mlx.mlx = mlx_init();
 	if (mlx.mlx == NULL)

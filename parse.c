@@ -6,7 +6,7 @@
 /*   By: vess <vess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 17:37:39 by jcampagn          #+#    #+#             */
-/*   Updated: 2022/02/15 23:41:54 by vess             ###   ########.fr       */
+/*   Updated: 2022/02/16 00:20:37 by vess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ int	check_map_rectengular(char **map)
 	return (1);
 }
 
-int	check_bord(char *line)
+int	check_bord(char *line, t_stuff *stuff)
 {
 	int	i;
 
 	i = 0;
-	while (line[i])
+	while (i < stuff->line_count)
 	{
 		if (line[i] != '1')
 			return (0);
@@ -52,15 +52,16 @@ int	check_is_surrounded_by_walls(char **map, t_stuff *stuff)
 	{
 		if (i == 0 || i == ((stuff->line_count) - 1))
 		{
-			if (!check_bord(map[i]))
+			if (!check_bord(map[i], stuff))
 				return (0);
 		}
-		if (map[i][0] != '1' || map[i][(stuff->line_len) - 1] != '1')
+		else if (map[i][0] != '1' || (map[i][(stuff->line_len) - 2]) != '1')
+		{
 			return (0);
+		}
 		i++;
 	}
 	return (1);
-
 }
 
 void	check_characters(char **map, t_stuff *stuff)
@@ -71,7 +72,6 @@ void	check_characters(char **map, t_stuff *stuff)
 	i = 0;
 	while (i < (stuff->line_count))
 	{
-
 		j = 0;
 		while (j < (stuff->line_len) - 1)
 		{
@@ -80,7 +80,11 @@ void	check_characters(char **map, t_stuff *stuff)
 			else if (map[i][j] == 'C')
 				stuff->collectible++;
 			else if (map[i][j] == 'P')
+			{
 				stuff->player++;
+				stuff->x = j;
+				stuff->y = i;
+			}
 			else if ((map[i][j] != '1') && (map[i][j] != '0'))
 				(stuff->unknown)++;
 			j++;
@@ -105,5 +109,3 @@ void	parse_file(char **map, t_stuff *stuff)
 	if (stuff->unknown > 1)
 		write(2, "Map error:  Unknown characters!\n", 42);
 }
-
-

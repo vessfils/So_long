@@ -6,7 +6,7 @@
 /*   By: vess <vess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 17:58:44 by jcampagn          #+#    #+#             */
-/*   Updated: 2022/02/15 23:32:47 by vess             ###   ########.fr       */
+/*   Updated: 2022/02/16 00:22:55 by vess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,6 @@ int	main(int ac, char **av)
 	if (fd < 0)
 		write(1, "Error\n", 6);
 	get_map(fd, map, &stuff);
-	//printmap(map);
-	printf("%d\n", check_is_surrounded_by_walls(map, &stuff));
 	display_map(map, stuff);
 	return (0);
 }
