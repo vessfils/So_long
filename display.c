@@ -6,7 +6,7 @@
 /*   By: vess <vess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 22:42:31 by vess              #+#    #+#             */
-/*   Updated: 2022/02/16 00:16:04 by vess             ###   ########.fr       */
+/*   Updated: 2022/02/17 17:20:26 by vess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,18 +45,15 @@ void	write_txt(char c, const t_data *mlx, int i, int j)
 			(mlx->txt.collect.w * j), (mlx->txt.collect.h * i));
 }
 
-
 void	put_txt(char **map, t_data mlx, t_stuff stuff)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-
 	while (i < stuff.line_count)
 	{
 		j = 0;
-
 		while (j < stuff.line_len)
 		{
 			write_txt(map[i][j], &mlx, i, j);

@@ -6,7 +6,7 @@
 #    By: vess <vess@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/01 05:31:56 by lzaccome          #+#    #+#              #
-#    Updated: 2022/02/15 22:29:21 by vess             ###   ########.fr        #
+#    Updated: 2022/02/17 17:20:18 by vess             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,9 @@ SRCS =	so_long.c \
 		display.c	\
 		free.c	\
 		moove.c \
-		parse.c
+		parse.c	\
+		error.c	\
+		utils.c
 
 _GREY=	$'\033[1;30m
 _RED=	$'\033[1;31m

@@ -6,7 +6,7 @@
 /*   By: vess <vess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 17:58:44 by jcampagn          #+#    #+#             */
-/*   Updated: 2022/02/16 00:22:55 by vess             ###   ########.fr       */
+/*   Updated: 2022/02/17 17:05:26 by vess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,18 +42,18 @@ void	get_map(int fd, char **map, t_stuff *stuff)
 	int	i;
 
 	i = 0;
-	map[i] = get_next_line(fd);
-	i++;
+	//map[i] = get_next_line(fd);
+	//i++;
 	while (i < stuff->line_count)
 	{
 		map[i] = get_next_line(fd);
 		if (!map[i])
-			write(1, "Error : gnl failed\n", 20);
+			map_error_exit(map, i, "Error : gnl failed\n");
 		if (ft_strlen(map[i]) != (size_t)stuff->line_len)
-			write(1, "Error : gnl failed\n", 20);
+			map_error_exit(map, i, "Error : Unrectengular map\n");
 		i++;
 	}
-	map[i] = 0;
+	//map[i] = "\0";
 	parse_file(map, stuff);
 	return ;
 }

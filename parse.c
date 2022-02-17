@@ -6,7 +6,7 @@
 /*   By: vess <vess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 17:37:39 by jcampagn          #+#    #+#             */
-/*   Updated: 2022/02/16 00:20:37 by vess             ###   ########.fr       */
+/*   Updated: 2022/02/17 17:43:54 by vess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ int	check_is_surrounded_by_walls(char **map, t_stuff *stuff)
 	int	i;
 
 	i = 0;
-
 	while (i < (stuff->line_count))
 	{
 		if (i == 0 || i == ((stuff->line_count) - 1))
@@ -55,10 +54,8 @@ int	check_is_surrounded_by_walls(char **map, t_stuff *stuff)
 			if (!check_bord(map[i], stuff))
 				return (0);
 		}
-		else if (map[i][0] != '1' || (map[i][(stuff->line_len) - 2]) != '1')
-		{
+		if (map[i][0] != '1' || map[i][stuff->line_len - 2] != '1')
 			return (0);
-		}
 		i++;
 	}
 	return (1);
@@ -95,17 +92,19 @@ void	check_characters(char **map, t_stuff *stuff)
 
 void	parse_file(char **map, t_stuff *stuff)
 {
+	if (map[0][1] == '\0')
+		map_error_exit(map, stuff->line_count, "the map is empty!\n");
 	if (!check_map_rectengular(map))
-		write(2, "Map error: the map is not a recangular!\n", 42);
+		map_error_exit(map, stuff->line_count, "the map not a recangular!\n");
 	if (!check_is_surrounded_by_walls(map, stuff))
-		write(2, "Map error: the map is not surrounded by walls!\n", 47);
+		map_error_exit(map, stuff->line_count, "Not surrounded by walls!\n");
 	check_characters(map, stuff);
 	if (stuff->player != 1)
-		write(2, "Map error: Player not presents!\n", 42);
+		map_error_exit(map, stuff->line_count, "Player not presents!\n");
 	if (stuff->exit == 0)
-		write(2, "Map error: Exit not presents!\n", 42);
+		map_error_exit(map, stuff->line_count, "Exit not presents!\n");
 	if (stuff->collectible == 0)
-		write(2, "Map error: Collectible not presents!\n", 42);
+		map_error_exit(map, stuff->line_count, "Collectible not presents!\n");
 	if (stuff->unknown > 1)
-		write(2, "Map error:  Unknown characters!\n", 42);
+		map_error_exit(map, stuff->line_count, "Unknown characters!\n");
 }

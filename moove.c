@@ -6,24 +6,11 @@
 /*   By: vess <vess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 17:56:59 by jcampagn          #+#    #+#             */
-/*   Updated: 2022/02/16 00:28:40 by vess             ###   ########.fr       */
+/*   Updated: 2022/02/17 17:20:49 by vess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-
-void	printmap(char **map)
-{
-	int	i;
-
-	i	=	0;
-	while (map [i] != 0)
-	{
-		printf("%s", map[i]);
-		i++;
-	}
-}
 
 void	moove_right(t_combo *combo)
 {
