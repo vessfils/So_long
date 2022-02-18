@@ -6,13 +6,13 @@
 #    By: vess <vess@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/01 05:31:56 by lzaccome          #+#    #+#              #
-#    Updated: 2022/02/17 17:20:18 by vess             ###   ########.fr        #
+#    Updated: 2022/02/18 21:44:31 by vess             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 
-CC = clang
+CC = clang -g3
 
 CFLAGS =  -Wall -Wextra -Werror
 
@@ -24,7 +24,8 @@ SRCS =	so_long.c \
 		moove.c \
 		parse.c	\
 		error.c	\
-		utils.c
+		utils.c	\
+		win_conditions.c
 
 _GREY=	$'\033[1;30m
 _RED=	$'\033[1;31m
@@ -66,4 +67,4 @@ git : fclean
 	
 re: fclean all
 
-.PHONY : all bonus clean fclean re
+.PHONY : all bonus clean fclean re git

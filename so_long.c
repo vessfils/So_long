@@ -6,7 +6,7 @@
 /*   By: vess <vess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 17:58:44 by jcampagn          #+#    #+#             */
-/*   Updated: 2022/02/17 17:05:26 by vess             ###   ########.fr       */
+/*   Updated: 2022/02/19 00:19:09 by vess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,12 @@ char	**malloc_map(int fd, t_stuff *stuff)
 		(stuff->line_count)++;
 		line = get_next_line(fd);
 	}
-	map = malloc((stuff->line_count + 1) * sizeof(char *));
+	map = (char **)malloc(sizeof(char *) *(stuff->line_count + 1));
 	if (!map)
-		return (NULL);
+	{
+		perror("Error!\n");
+		exit(1);
+	}
 	return (map);
 }
 
@@ -42,18 +45,20 @@ void	get_map(int fd, char **map, t_stuff *stuff)
 	int	i;
 
 	i = 0;
-	//map[i] = get_next_line(fd);
-	//i++;
+	map[i] = get_next_line(fd);
+	if (!map[i])
+		map_error_exit(map, i, "Error : gnl failed\n");
+	i++;
 	while (i < stuff->line_count)
 	{
 		map[i] = get_next_line(fd);
 		if (!map[i])
 			map_error_exit(map, i, "Error : gnl failed\n");
-		if (ft_strlen(map[i]) != (size_t)stuff->line_len)
-			map_error_exit(map, i, "Error : Unrectengular map\n");
 		i++;
 	}
-	//map[i] = "\0";
+	map[i] = get_next_line(fd);
+	i++;
+	map[i] = NULL;
 	parse_file(map, stuff);
 	return ;
 }
@@ -75,19 +80,23 @@ int	main(int ac, char **av)
 	char				**map;
 	t_stuff				stuff;
 
-
 	init_stuff(&stuff);
 	if (ac != 2)
-		return (write(1, "Error\n", 6));
+	{
+		write(2, "Error : Incorrect number of arguments\n", 37);
+		exit(1);
+	}
 	fd = open(av[1], O_RDONLY);
 	if (fd < 0)
-		write(1, "Error\n", 6);
+		open_error();
 	map = malloc_map(fd, &stuff);
 	close(fd);
 	fd = open(av[1], O_RDONLY);
 	if (fd < 0)
-		write(1, "Error\n", 6);
+		open_error();
 	get_map(fd, map, &stuff);
 	display_map(map, stuff);
+	free_map(map);
+	close(fd);
 	return (0);
 }
