@@ -6,7 +6,7 @@
 /*   By: vess <vess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 22:42:31 by vess              #+#    #+#             */
-/*   Updated: 2022/02/18 21:33:25 by vess             ###   ########.fr       */
+/*   Updated: 2022/02/19 12:15:18 by vess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,5 +83,6 @@ void	display_map(char **map, t_stuff stuff)
 	put_txt(map, mlx, stuff);
 	combo.mlx = &mlx;
 	mlx_hook(mlx.win, 2, (1L << 0), key_hook, &combo);
+	mlx_hook(mlx.win, 17, (1L << 0), ft_close_cross, &combo);
 	mlx_loop(mlx.mlx);
 }

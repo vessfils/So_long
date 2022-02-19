@@ -6,7 +6,7 @@
 /*   By: vess <vess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 17:56:59 by jcampagn          #+#    #+#             */
-/*   Updated: 2022/02/18 23:09:05 by vess             ###   ########.fr       */
+/*   Updated: 2022/02/19 11:52:31 by vess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <stdio.h>
 # include <fcntl.h>
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 5
+#  define BUFFER_SIZE 42
 # endif
 
 /* -------------------------------------------------------------------------- */
@@ -82,8 +82,6 @@ typedef struct s_combo {
 	int		count;
 }				t_combo;
 
-
-
 /* -------------------------------------------------------------------------- */
 /*                                     GNL                                    */
 /* -------------------------------------------------------------------------- */
@@ -124,4 +122,8 @@ int		win_down(t_combo *combo);
 int		win_up(t_combo *combo);
 void	map_error_exit2(char **map, int line, char *msg);
 void	open_error(void);
+void	ft_check_file(char *filename);
+char	*ft_strrchr(const char *str, int c);
+int		ft_strcmp(const char *s1, const char *s2);
+int		ft_close_cross(t_combo *combo);
 #endif

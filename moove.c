@@ -6,7 +6,7 @@
 /*   By: vess <vess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 17:56:59 by jcampagn          #+#    #+#             */
-/*   Updated: 2022/02/18 22:22:17 by vess             ###   ########.fr       */
+/*   Updated: 2022/02/19 11:43:55 by vess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	moove_down(t_combo *combo)
 {
 	if (combo->map[combo->stuff->y + 1][combo->stuff->x] == 'C')
 		combo->stuff->collectible--;
-	if (combo->map[combo->stuff->y - 1][combo->stuff->x] == 'E' &&
+	if (combo->map[combo->stuff->y + 1][combo->stuff->x] == 'E' &&
 		combo->stuff->collectible == 0)
 	{
 		printf("Congratulations, you won by making %d moves!\n", ++combo->count);
