@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vess <vess@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jcampagn <jcampagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 14:38:22 by vess              #+#    #+#             */
-/*   Updated: 2022/02/18 22:55:45 by vess             ###   ########.fr       */
+/*   Updated: 2022/02/19 16:55:24 by jcampagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	open_error(void)
+void	error(void)
 {
-	perror("Open error");
+	perror("Error");
 	exit(1);
 }
 

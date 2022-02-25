@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vess <vess@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jcampagn <jcampagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 17:37:39 by jcampagn          #+#    #+#             */
-/*   Updated: 2022/02/19 12:28:03 by vess             ###   ########.fr       */
+/*   Updated: 2022/02/19 17:48:46 by jcampagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,10 @@
 int	check_map_rectengular(char **map, t_stuff *stuff)
 {
 	int	i;
-//	int	len;
 
 	i = 0;
-	//len = 0;
-	//len = ft_strlen(map[i]);
 	while (map[i] != 0)
 	{
-		printf("map[%d] = %c\n", i, map[i][19]);
-		printf("ft_strlen map[%d]= %zu | stuff->line = %d\n",i , ft_strlen(map[i]), stuff->line_len);
 		if (ft_strlen(map[i]) != (size_t)stuff->line_len)
 			return (0);
 		i++;
@@ -52,12 +47,12 @@ int	check_is_surrounded_by_walls(char **map, t_stuff *stuff)
 	i = 0;
 	while (i < (stuff->line_count))
 	{
-		if (i == 0 || i == ((stuff->line_count) - 1))
+		if (i == 0 || i == ((stuff->line_count)))
 		{
 			if (!check_bord(map[i], stuff))
 				return (0);
 		}
-		if (map[i][0] != '1' || map[i][stuff->line_len - 2] != '1')
+		if (map[i][0] != '1' || map[i][stuff->line_len - 1] != '1')
 			return (0);
 		i++;
 	}
@@ -95,10 +90,10 @@ void	check_characters(char **map, t_stuff *stuff)
 
 void	parse_file(char **map, t_stuff *stuff)
 {
-	if (map[0][1] == '\0')
+	if (stuff->line_count == 0 || map[0][1] == '\0')
 		map_error_exit(map, stuff->line_count, "the map is empty!\n");
 	if (!check_map_rectengular(map, stuff))
-		map_error_exit2(map, stuff->line_count, "the map not a recangular!\n");
+		map_error_exit2(map, stuff->line_count, "the map not a rectangular!\n");
 	if (!check_is_surrounded_by_walls(map, stuff))
 		map_error_exit(map, stuff->line_count, "Not surrounded by walls!\n");
 	check_characters(map, stuff);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moove.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vess <vess@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jcampagn <jcampagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 17:56:59 by jcampagn          #+#    #+#             */
-/*   Updated: 2022/02/19 11:43:55 by vess             ###   ########.fr       */
+/*   Updated: 2022/02/19 16:26:37 by jcampagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	moove_right(t_combo *combo)
 		printf("Congratulations, you won by making %d moves!\n", ++combo->count);
 		free_mlx(combo->mlx, combo->map);
 	}
-	//free_mlx(combo->mlx, combo->map, combo->stuff->line_count);
 	combo->map[combo->stuff->y][combo->stuff->x] = '0';
 	combo->map[combo->stuff->y][combo->stuff->x + 1] = 'P';
 	combo->stuff->x++;
@@ -40,7 +39,6 @@ void	moove_left(t_combo *combo)
 		printf("Congratulations, you won by making %d moves!\n", ++combo->count);
 		free_mlx(combo->mlx, combo->map);
 	}
-	//free_mlx(combo->mlx, combo->map, combo->stuff->line_count);
 	combo->map[combo->stuff->y][combo->stuff->x] = '0';
 	combo->map[combo->stuff->y][combo->stuff->x - 1] = 'P';
 	combo->stuff->x--;
@@ -58,7 +56,6 @@ void	moove_up(t_combo *combo)
 		printf("Congratulations, you won by making %d moves!\n", ++combo->count);
 		free_mlx(combo->mlx, combo->map);
 	}
-	//free_mlx(combo->mlx, combo->map, combo->stuff->line_count);
 	combo->map[combo->stuff->y][combo->stuff->x] = '0';
 	combo->map[combo->stuff->y - 1][combo->stuff->x] = 'P';
 	combo->stuff->y--;
@@ -76,7 +73,6 @@ void	moove_down(t_combo *combo)
 		printf("Congratulations, you won by making %d moves!\n", ++combo->count);
 		free_mlx(combo->mlx, combo->map);
 	}
-	//free_mlx(combo->mlx, combo->map, combo->stuff->line_count);
 	combo->map[combo->stuff->y][combo->stuff->x] = '0';
 	combo->map[combo->stuff->y + 1][combo->stuff->x] = 'P';
 	combo->stuff->y++;
@@ -89,7 +85,6 @@ int	key_hook(int key, t_combo *combo)
 	if (key == 65307)
 	{	
 		free_mlx(combo->mlx, combo->map);
-	//free_mlx(combo->mlx, combo->map, combo->stuff->line_count);
 	}
 	else if (key == 100
 		&& combo->map[combo->stuff->y][combo->stuff->x + 1] != '1' &&

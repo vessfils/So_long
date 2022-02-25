@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vess <vess@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jcampagn <jcampagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 17:56:59 by jcampagn          #+#    #+#             */
-/*   Updated: 2022/02/19 11:52:31 by vess             ###   ########.fr       */
+/*   Updated: 2022/02/19 17:28:13 by jcampagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <fcntl.h>
+# include <errno.h>
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 42
 # endif
@@ -98,8 +99,8 @@ char	*get_next_line(int fd);
 void	write_txt(char c, const t_data *mlx, int i, int j);
 void	put_txt(char **map, t_data mlx, t_stuff stuff);
 void	display_map(char **map, t_stuff stuff);
-void	init_txt(t_data *mlx, t_img *txt, char *path);
-void	get_txt(t_data *mlx);
+int		init_txt(t_data *mlx, t_img *txt, char *path);
+int		get_txt(t_data *mlx);
 int		key_hook(int key, t_combo *combo);
 //void	free_mlx(t_data *mlx, char **map, int line_count);
 void	free_mlx(t_data *mlx, char **map);
@@ -121,7 +122,7 @@ int		win_right(t_combo *combo);
 int		win_down(t_combo *combo);
 int		win_up(t_combo *combo);
 void	map_error_exit2(char **map, int line, char *msg);
-void	open_error(void);
+void	error(void);
 void	ft_check_file(char *filename);
 char	*ft_strrchr(const char *str, int c);
 int		ft_strcmp(const char *s1, const char *s2);

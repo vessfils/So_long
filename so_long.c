@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vess <vess@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jcampagn <jcampagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 17:58:44 by jcampagn          #+#    #+#             */
-/*   Updated: 2022/02/19 12:24:20 by vess             ###   ########.fr       */
+/*   Updated: 2022/02/19 16:53:00 by jcampagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,14 @@ char	**malloc_map(int fd, t_stuff *stuff)
 	char	*line;
 
 	map = NULL;
+	errno = 0;
 	line = get_next_line(fd);
+	if (errno)
+		error();
 	if (!line || line[0] == 0)
-	{
-		write(1, "Error\n", 6);
 		free(line);
-	}
 	stuff->line_len = ft_strlen(line);
+	stuff->line_len -= (stuff->line_len && line[stuff->line_len - 1] == '\n');
 	while (line)
 	{
 		free(line);
@@ -42,29 +43,24 @@ char	**malloc_map(int fd, t_stuff *stuff)
 
 void	get_map(int fd, char **map, t_stuff *stuff)
 {
-	int	i;
+	int		i;
 	char	*str;
+	int		len;
 
 	i = 0;
-	/*
-	map[i] = get_next_line(fd);
-	if (!map[i])
-		map_error_exit(map, i, "Error : gnl failed\n");
-	i++;
-	*/
 	str = get_next_line(fd);
-//	while (i < stuff->line_count)	
 	while (str)
 	{
-		//map[i] = get_next_line(fd);
 		map[i] = str;
+		len = ft_strlen(map[i]);
+		if (len && map[i][len - 1] == '\n')
+			map[i][len - 1] = '\0';
 		str = get_next_line(fd);
 		if (!map[i])
 			map_error_exit(map, i, "Error : gnl failed\n");
 		i++;
 	}
-	map[i] = get_next_line(fd);
-	//map[i] = NULL;
+	map[i] = NULL;
 	parse_file(map, stuff);
 	return ;
 }
@@ -95,12 +91,12 @@ int	main(int ac, char **av)
 	ft_check_file(av[1]);
 	fd = open(av[1], O_RDONLY);
 	if (fd < 0)
-		open_error();
+		error();
 	map = malloc_map(fd, &stuff);
 	close(fd);
 	fd = open(av[1], O_RDONLY);
 	if (fd < 0)
-		open_error();
+		error();
 	get_map(fd, map, &stuff);
 	display_map(map, stuff);
 	free_map(map);
