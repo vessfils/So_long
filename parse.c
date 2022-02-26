@@ -6,7 +6,7 @@
 /*   By: jcampagn <jcampagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 17:37:39 by jcampagn          #+#    #+#             */
-/*   Updated: 2022/02/19 17:48:46 by jcampagn         ###   ########.fr       */
+/*   Updated: 2022/02/26 15:09:08 by jcampagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ int	check_bord(char *line, t_stuff *stuff)
 	int	i;
 
 	i = 0;
-	while (i < stuff->line_count)
-	{
+	while (i < stuff->line_count && line[i])
+	{	
 		if (line[i] != '1')
 			return (0);
 		i++;
